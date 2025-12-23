@@ -383,7 +383,12 @@ Quick overview:
 
 ## What's Next
 
-- [ ] Output interfaces (PDF, web viewer)
-- [ ] JWT token validation
-- [ ] Real-time collaboration
-- [ ] Frontend application
+See **[TODO.md](TODO.md)** for the complete task list.
+
+**Launch blockers:**
+- Frontend pages (voice recording, document viewer)
+- Stripe payments
+- PDF export
+- File uploads
+
+**Already done:** Core domain, AI integration, auth (JWT + OAuth), multilingual support, infrastructure (Terraform), CI/CD, frontend scaffold.
