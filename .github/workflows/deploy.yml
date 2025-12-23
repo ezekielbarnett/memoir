@@ -2,35 +2,30 @@
 # CI/CD Pipeline - Build and Deploy to AWS
 # =============================================================================
 #
-# Triggers:
-#   - Push to main branch → Deploy to production
-#   - Push to develop branch → Deploy to dev
-#   - Pull requests → Run tests only
+# ⚠️  DISABLED - Only runs manually via workflow_dispatch
 #
-# Required Secrets (set in GitHub repo Settings → Secrets):
-#   - AWS_ACCESS_KEY_ID     - Your IAM access key
-#   - AWS_SECRET_ACCESS_KEY - Your IAM secret key
-#
-# Optional Secrets:
-#   - AWS_REGION            - Defaults to us-east-1
-#
-# ⚠️  CI/CD is DISABLED by default. To enable:
-#   1. Set up the secrets above
-#   2. Remove the 'if: false' line from the build and deploy jobs
+# To enable automatic CI/CD:
+#   1. Set GitHub Secrets: AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY
+#   2. Uncomment the push/pull_request triggers below
+#   3. Remove 'if: false' from jobs
 #
 # =============================================================================
 
 name: Deploy
 
 on:
-  push:
-    branches:
-      - main
-      - develop
-  pull_request:
-    branches:
-      - main
-      - develop
+  # DISABLED: Uncomment these when ready for CI/CD
+  # push:
+  #   branches:
+  #     - main
+  #     - develop
+  # pull_request:
+  #   branches:
+  #     - main
+  #     - develop
+  
+  # Manual trigger only for now
+  workflow_dispatch:
 
 env:
   AWS_REGION: us-east-1
