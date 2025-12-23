@@ -1,0 +1,76 @@
+# Celebration Book Document Template
+#
+# Structure for birthday tributes and celebration books.
+# Designed to showcase multiple contributors' memories.
+
+id: celebration_book
+name: "Celebration Book"
+description: "Template for birthday and celebration tribute books"
+version: 1
+tags:
+  - birthday
+  - tribute
+  - celebration
+
+styles:
+  font_family: "Georgia, serif"
+  heading_font: "Helvetica Neue, sans-serif"
+  accent_color: "#FF6B6B"
+  page_margin: "1in"
+
+sections:
+  - id: title_page
+    name: "Title Page"
+    source: metadata
+    metadata_fields:
+      - subject.name
+      - subject.photo
+    order: 1
+
+  - id: dedication
+    name: "For You"
+    source: ai_generated
+    prompt_ref: warm_nostalgic.summary
+    order: 2
+    optional: false
+
+  - id: memories
+    name: "Memories & Stories"
+    source: ai_generated
+    prompt_ref: warm_nostalgic.memoir
+    order: 3
+    optional: false
+
+  - id: themes
+    name: "What Makes You, You"
+    source: ai_generated
+    prompt_ref: warm_nostalgic.themes
+    order: 4
+    optional: true
+
+  - id: quotes
+    name: "In Their Words"
+    source: direct_quotes
+    content_filter:
+      min_length: 50
+      tags:
+        - message
+        - wish
+    order: 5
+    optional: true
+
+  - id: photos
+    name: "Memories in Pictures"
+    source: direct_content
+    content_filter:
+      content_type: image
+    order: 6
+    optional: true
+
+  - id: contributors
+    name: "With Love From"
+    source: metadata
+    metadata_fields:
+      - contributors
+    order: 7
+

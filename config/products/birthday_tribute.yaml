@@ -1,0 +1,80 @@
+# Birthday Tribute Product Definition
+# 
+# Collects memories from friends and family to create
+# a personalized birthday celebration book.
+
+product: birthday_tribute
+name: "Birthday Memory Book"
+description: "Collect memories from friends and family for a birthday celebration"
+version: 1
+
+# Who the memoir is about
+subject:
+  required_fields:
+    - name
+  optional_fields:
+    - birth_date
+    - photo
+
+# Resources this product uses
+resources:
+  questions: birthday_memories
+  prompts: warm_nostalgic
+  document_template: celebration_book
+
+# Content collection configuration
+collection:
+  interfaces:
+    - voice_recorder
+    - web_form
+    - photo_upload
+  
+  question_selection:
+    strategy: random  # sequential, random, ai_adaptive, ai_generative
+    min_questions: 3
+    max_questions: 10
+  
+  contributor_settings:
+    allow_anonymous: true
+    max_contributors: 50
+    require_relationship: true
+    require_email: false
+
+# Processing pipeline
+processing:
+  trigger: manual  # manual, auto_on_deadline, auto_on_threshold
+  
+  pipeline:
+    - service: content_merger
+      config:
+        dedupe: true
+        merge_similar: true
+    
+    - service: ai_writer
+      config:
+        prompt_ref: warm_nostalgic
+        output_type: memoir
+    
+    - service: structurer
+      config:
+        template_ref: celebration_book
+
+# Delivery options
+delivery:
+  interfaces:
+    - web_viewer
+    - pdf_export
+  
+  sharing:
+    public_link: true
+    password_protection: optional
+    allow_download: true
+
+# UI customization
+ui:
+  theme: celebration
+  colors:
+    primary: "#FF6B6B"
+    secondary: "#4ECDC4"
+    background: "#FFF9F0"
+

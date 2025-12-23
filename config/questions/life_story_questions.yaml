@@ -1,0 +1,309 @@
+# Life Story Question Bank
+#
+# Comprehensive questions for autobiography/memoir collection.
+# Covers all major life stages and themes.
+
+id: life_story_questions
+name: "Life Story Questions"
+description: "Comprehensive questions for personal memoir collection"
+version: 1
+tags:
+  - autobiography
+  - memoir
+  - life_story
+
+questions:
+  # ==================
+  # EARLY CHILDHOOD
+  # ==================
+  
+  - id: earliest_memory
+    text: "What is your earliest memory?"
+    tags:
+      - childhood
+      - earliest
+      - formative
+    category: early_childhood
+    priority: 3
+    follow_ups:
+      - "How old were you in that memory?"
+      - "What feelings does that memory bring up?"
+
+  - id: childhood_home
+    text: "Describe the home you grew up in. What do you remember most about it?"
+    tags:
+      - childhood
+      - home
+      - environment
+    category: early_childhood
+    priority: 2
+
+  - id: parents_description
+    text: "Tell me about your parents. What were they like when you were young?"
+    tags:
+      - family
+      - parents
+      - relationships
+    category: family
+    priority: 3
+
+  - id: siblings
+    text: "Did you have siblings? What was your relationship like growing up?"
+    tags:
+      - family
+      - siblings
+      - relationships
+    category: family
+    conditions:
+      # This question adapts based on earlier answers
+
+  - id: childhood_friends
+    text: "Who was your best friend as a child? What did you do together?"
+    tags:
+      - childhood
+      - friendship
+      - play
+    category: early_childhood
+
+  - id: favorite_childhood_activity
+    text: "What was your favorite thing to do as a child?"
+    tags:
+      - childhood
+      - play
+      - interests
+    category: early_childhood
+
+  # ==================
+  # EDUCATION
+  # ==================
+
+  - id: school_memories
+    text: "What are your strongest memories from school?"
+    tags:
+      - education
+      - school
+      - formative
+    category: education
+    priority: 2
+
+  - id: influential_teacher
+    text: "Was there a teacher who had a significant impact on you? Tell me about them."
+    tags:
+      - education
+      - influence
+      - mentor
+    category: education
+
+  - id: academic_interests
+    text: "What subjects interested you most? Why do you think that was?"
+    tags:
+      - education
+      - interests
+      - identity
+    category: education
+
+  # ==================
+  # COMING OF AGE
+  # ==================
+
+  - id: teenage_years
+    text: "What were your teenage years like? What defined that period for you?"
+    tags:
+      - adolescence
+      - identity
+      - growth
+    category: coming_of_age
+    priority: 2
+
+  - id: first_job
+    text: "What was your first job? What did you learn from it?"
+    tags:
+      - work
+      - first
+      - lessons
+    category: coming_of_age
+
+  - id: leaving_home
+    text: "Tell me about leaving home for the first time. How did that feel?"
+    tags:
+      - independence
+      - transition
+      - growth
+    category: coming_of_age
+    priority: 2
+
+  # ==================
+  # CAREER & PURPOSE
+  # ==================
+
+  - id: career_path
+    text: "How did you end up in your career? Was it what you expected?"
+    tags:
+      - career
+      - work
+      - path
+    category: career
+    priority: 2
+
+  - id: career_proud_moment
+    text: "What accomplishment in your career are you most proud of?"
+    tags:
+      - career
+      - achievement
+      - pride
+    category: career
+
+  - id: career_challenges
+    text: "What was the biggest challenge you faced in your work life? How did you handle it?"
+    tags:
+      - career
+      - challenge
+      - resilience
+    category: career
+
+  # ==================
+  # RELATIONSHIPS
+  # ==================
+
+  - id: meeting_partner
+    text: "Tell me about meeting your partner. What drew you to them?"
+    tags:
+      - love
+      - partnership
+      - relationship
+    category: relationships
+    conditions:
+      requires_tags:
+        - has_partner
+
+  - id: marriage
+    text: "What was your wedding day like? What do you remember most?"
+    tags:
+      - love
+      - marriage
+      - milestone
+    category: relationships
+    conditions:
+      requires_tags:
+        - married
+
+  - id: becoming_parent
+    text: "Tell me about becoming a parent. How did it change you?"
+    tags:
+      - family
+      - parenthood
+      - transformation
+    category: relationships
+    priority: 2
+    conditions:
+      requires_tags:
+        - has_children
+
+  # ==================
+  # CHALLENGES & GROWTH
+  # ==================
+
+  - id: biggest_challenge
+    text: "What was the most difficult period in your life? How did you get through it?"
+    tags:
+      - challenge
+      - resilience
+      - growth
+    category: challenges
+    priority: 3
+
+  - id: failure_lesson
+    text: "Tell me about a time you failed at something. What did you learn from it?"
+    tags:
+      - failure
+      - lesson
+      - growth
+    category: challenges
+
+  - id: turning_point
+    text: "Was there a moment that changed the direction of your life? What happened?"
+    tags:
+      - turning_point
+      - change
+      - pivotal
+    category: challenges
+    priority: 3
+
+  # ==================
+  # VALUES & BELIEFS
+  # ==================
+
+  - id: core_values
+    text: "What values are most important to you? Where did they come from?"
+    tags:
+      - values
+      - beliefs
+      - identity
+    category: values
+    priority: 2
+
+  - id: faith_spirituality
+    text: "What role has faith or spirituality played in your life?"
+    tags:
+      - spirituality
+      - faith
+      - meaning
+    category: values
+
+  - id: life_philosophy
+    text: "If you had to sum up your philosophy of life, what would it be?"
+    tags:
+      - philosophy
+      - wisdom
+      - meaning
+    category: values
+    priority: 2
+
+  # ==================
+  # REFLECTION
+  # ==================
+
+  - id: proudest_moment
+    text: "What are you most proud of in your life?"
+    tags:
+      - pride
+      - achievement
+      - reflection
+    category: reflection
+    priority: 3
+
+  - id: regrets
+    text: "Is there anything you wish you had done differently?"
+    tags:
+      - regret
+      - reflection
+      - wisdom
+    category: reflection
+
+  - id: advice_to_younger_self
+    text: "What advice would you give to your younger self?"
+    tags:
+      - advice
+      - wisdom
+      - reflection
+    category: reflection
+    priority: 2
+
+  - id: legacy
+    text: "How would you like to be remembered?"
+    tags:
+      - legacy
+      - meaning
+      - reflection
+    category: reflection
+    priority: 3
+
+  - id: message_to_future
+    text: "What would you want future generations of your family to know about you?"
+    tags:
+      - legacy
+      - family
+      - message
+    category: reflection
+    priority: 2
+

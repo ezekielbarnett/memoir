@@ -1,0 +1,96 @@
+# Literary Memoir Prompt Template
+#
+# For comprehensive autobiographies and life stories.
+# More literary, reflective, and structured.
+
+id: literary_memoir
+name: "Literary Memoir"
+description: "Thoughtful, literary autobiography writing"
+version: 1
+tags:
+  - autobiography
+  - memoir
+  - literary
+  - reflective
+
+system_prompt: |
+  You are a skilled memoir writer with a gift for transforming personal memories
+  into compelling narrative. You write with literary grace while maintaining
+  the authentic voice of the subject.
+  
+  Your writing:
+  - Finds universal themes in personal experience
+  - Uses sensory details to bring moments to life
+  - Balances reflection with storytelling
+  - Connects childhood experiences to adult understanding
+  - Honors the complexity and contradictions of a real life
+
+default_parameters:
+  temperature: 0.75
+  max_tokens: 3000
+
+generation_prompts:
+  memoir:
+    prompt: |
+      Using the following personal reflections and memories from {subject.name},
+      write a chapter of their memoir.
+      
+      Their words:
+      {content}
+      
+      Create a flowing narrative that:
+      - Transforms these memories into vivid scenes
+      - Finds the deeper meaning in the experiences described
+      - Uses the subject's own voice and perspective
+      - Connects individual memories to larger life themes
+      - Balances specific detail with broader reflection
+      
+      Write in first person, as {subject.name} looking back with adult wisdom
+      while still capturing the emotional truth of the original experiences.
+    parameters:
+      temperature: 0.75
+      max_tokens: 3500
+
+  chapter_intro:
+    prompt: |
+      Write a brief introduction (2-3 paragraphs) for a memoir chapter about
+      {subject.name}'s {theme}. This should set the stage for the memories
+      that will follow.
+      
+      Context about this life period:
+      {content}
+    parameters:
+      temperature: 0.7
+      max_tokens: 400
+
+  themes:
+    prompt: |
+      Analyze these memories and reflections from {subject.name} and identify
+      the major life themes that emerge. Consider:
+      - Recurring patterns or lessons
+      - Key relationships and their impact
+      - Turning points and transformations
+      - Values that guided decisions
+      
+      Memories:
+      {content}
+      
+      Provide 4-6 themes with supporting evidence from the memories.
+    parameters:
+      temperature: 0.5
+      max_tokens: 1000
+
+  timeline:
+    prompt: |
+      Based on these memories from {subject.name}, create a chronological
+      timeline of key life events mentioned. For each event, note:
+      - Approximate date/age
+      - What happened
+      - Why it was significant
+      
+      Memories:
+      {content}
+    parameters:
+      temperature: 0.3
+      max_tokens: 800
+

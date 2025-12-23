@@ -1,0 +1,420 @@
+# Monthly Life Story Product Definition
+#
+# A year-long journey through your life story, delivered monthly.
+# Each month unlocks a new chapter, giving time to reflect and savor
+# the process of documenting your life.
+
+product: monthly_life_story
+name: "Your Life Story - A Year-Long Journey"
+description: |
+  Document your life story one chapter at a time. Each month, we'll unlock 
+  a new phase focused on a different period of your life. Take your time, 
+  reflect deeply, and create a meaningful memoir without feeling overwhelmed.
+version: 1
+
+# Who the memoir is about
+subject:
+  required_fields:
+    - name
+    - birth_year
+  optional_fields:
+    - birth_date
+    - birthplace
+    - photo
+
+# Resources
+resources:
+  questions: life_story_questions
+  prompts: literary_memoir
+  document_template: autobiography
+
+# =============================================================================
+# PHASED JOURNEY
+# =============================================================================
+
+phases:
+  # Month 1: Early childhood
+  - id: early_years
+    name: "The Early Years"
+    description: "Your first memories, childhood home, and family"
+    order: 1
+    
+    questions_filter:
+      categories:
+        - early_childhood
+        - family
+      max_questions: 8
+    
+    unlock: immediate  # Available from day 1
+    
+    question_selection:
+      strategy: ai_adaptive
+      min_questions: 4
+      max_questions: 8
+    
+    # What happens when this phase completes
+    on_complete:
+      - service: draft_updater
+        config:
+          mode: generate_chapter
+          prompt_ref: literary_memoir.memoir
+      - service: theme_analyzer
+        config:
+          update_context: true
+          extract_facts: true
+      - service: notification
+        config:
+          template: phase_complete_with_preview
+          include_draft_link: true
+
+  # Month 2: Education & school
+  - id: school_days
+    name: "School Days"
+    description: "Your education, teachers, and friends"
+    order: 2
+    
+    questions_filter:
+      categories:
+        - education
+      max_questions: 6
+    
+    unlock:
+      type: scheduled
+      delay_days: 30
+      requires: early_years
+    
+    question_selection:
+      strategy: ai_adaptive
+      min_questions: 3
+      max_questions: 6
+    
+    on_complete:
+      - service: draft_updater
+        config:
+          mode: generate_chapter
+      - service: theme_analyzer
+        config:
+          update_context: true
+      - service: notification
+        config:
+          template: phase_complete_with_preview
+
+  # Month 3: Coming of age
+  - id: finding_yourself
+    name: "Finding Yourself"
+    description: "Teenage years, independence, and self-discovery"
+    order: 3
+    
+    questions_filter:
+      categories:
+        - coming_of_age
+      max_questions: 6
+    
+    unlock:
+      type: scheduled
+      delay_days: 30
+      requires: school_days
+    
+    question_selection:
+      strategy: ai_adaptive
+      min_questions: 3
+      max_questions: 6
+    
+    on_complete:
+      - service: draft_updater
+        config:
+          mode: generate_chapter
+      - service: theme_analyzer
+        config:
+          update_context: true
+      - service: notification
+        config:
+          template: phase_complete_with_preview
+
+  # Month 4: Career & purpose
+  - id: career_path
+    name: "Career & Purpose"
+    description: "Your work life, achievements, and professional journey"
+    order: 4
+    
+    questions_filter:
+      categories:
+        - career
+      max_questions: 6
+    
+    unlock:
+      type: scheduled
+      delay_days: 30
+      requires: finding_yourself
+    
+    question_selection:
+      strategy: ai_adaptive
+      min_questions: 3
+      max_questions: 6
+    
+    on_complete:
+      - service: draft_updater
+        config:
+          mode: generate_chapter
+      - service: theme_analyzer
+        config:
+          update_context: true
+      - service: notification
+        config:
+          template: phase_complete_with_preview
+
+  # Month 5: Relationships
+  - id: love_and_family
+    name: "Love & Family"
+    description: "Relationships, partnership, and building a family"
+    order: 5
+    required: false  # Optional for those without partners/children
+    
+    questions_filter:
+      categories:
+        - relationships
+      max_questions: 8
+    
+    unlock:
+      type: scheduled
+      delay_days: 30
+      requires: career_path
+    
+    question_selection:
+      strategy: ai_adaptive
+      min_questions: 2
+      max_questions: 8
+    
+    on_complete:
+      - service: draft_updater
+        config:
+          mode: generate_chapter
+      - service: theme_analyzer
+        config:
+          update_context: true
+      - service: notification
+        config:
+          template: phase_complete_with_preview
+
+  # Month 6: Challenges & growth
+  - id: challenges
+    name: "Challenges & Triumphs"
+    description: "Difficult times, resilience, and personal growth"
+    order: 6
+    
+    questions_filter:
+      categories:
+        - challenges
+      max_questions: 6
+    
+    unlock:
+      type: scheduled
+      delay_days: 30
+      requires: love_and_family
+    
+    question_selection:
+      strategy: ai_adaptive
+      min_questions: 3
+      max_questions: 6
+    
+    on_complete:
+      - service: draft_updater
+        config:
+          mode: generate_chapter
+      - service: theme_analyzer
+        config:
+          update_context: true
+      - service: notification
+        config:
+          template: phase_complete_with_preview
+
+  # Month 7: Values & wisdom
+  - id: wisdom
+    name: "Values & Wisdom"
+    description: "What you believe, what you've learned, and your philosophy"
+    order: 7
+    
+    questions_filter:
+      categories:
+        - values
+      max_questions: 6
+    
+    unlock:
+      type: scheduled
+      delay_days: 30
+      requires: challenges
+    
+    question_selection:
+      strategy: ai_adaptive
+      min_questions: 3
+      max_questions: 6
+    
+    on_complete:
+      - service: draft_updater
+        config:
+          mode: generate_chapter
+      - service: theme_analyzer
+        config:
+          update_context: true
+      - service: notification
+        config:
+          template: phase_complete_with_preview
+
+  # Month 8: Reflection & legacy
+  - id: reflection
+    name: "Looking Back & Forward"
+    description: "Reflections on your life, legacy, and messages for the future"
+    order: 8
+    
+    questions_filter:
+      categories:
+        - reflection
+      max_questions: 8
+    
+    unlock:
+      type: scheduled
+      delay_days: 30
+      requires: wisdom
+    
+    question_selection:
+      strategy: ai_adaptive
+      min_questions: 4
+      max_questions: 8
+    
+    on_complete:
+      - service: draft_updater
+        config:
+          mode: generate_chapter
+          finalize: true  # Last phase - finalize the draft
+      - service: theme_analyzer
+        config:
+          update_context: true
+          generate_final_summary: true
+      - service: notification
+        config:
+          template: journey_complete
+          include_full_preview: true
+
+# =============================================================================
+# NOTIFICATIONS
+# =============================================================================
+
+notifications:
+  enabled: true
+  from_name: "Your Life Story"
+  
+  triggers:
+    # When a new phase unlocks
+    - event: phase_unlock
+      channel: email
+      template: phase_invitation
+    
+    # Reminder if phase not started after 7 days
+    - event: phase_reminder
+      channel: email
+      template: gentle_reminder
+      delay_days: 7
+      only_if_not_started: true
+    
+    # When a phase is completed
+    - event: phase_complete
+      channel: email
+      template: phase_complete
+    
+    # Upcoming phase notification (3 days before unlock)
+    - event: phase_upcoming
+      channel: email
+      template: phase_upcoming
+      delay_days: -3  # Negative = before the event
+
+# =============================================================================
+# COLLECTION (defaults for phases)
+# =============================================================================
+
+collection:
+  interfaces:
+    - voice_recorder
+    - web_form
+  
+  contributor_settings:
+    allow_anonymous: false
+    max_contributors: 1  # Just the subject
+    require_email: true
+
+# =============================================================================
+# OUTPUT - Content is primary, documents are projections
+# =============================================================================
+
+output:
+  # Users can lock sections to preserve manual edits
+  allow_section_locking: true
+  allow_manual_edits: true
+  show_regenerate_option: true
+  
+  projections:
+    # Main memoir - full book
+    - id: full_memoir
+      name: "Complete Life Story"
+      description: "Your full memoir, organized thematically"
+      style: thematic
+      length: comprehensive
+      is_default: true
+      voice_guidance: "warm, reflective, literary"
+      prompt_template: literary_memoir
+      suggested_sections:
+        - Early Roots
+        - Growing Up
+        - Coming of Age
+        - Building a Life
+        - Love & Connection
+        - Challenges Faced
+        - Wisdom Earned
+        - Looking Forward
+      auto_regenerate: false  # User controls when to regenerate
+      regenerate_on_phase_complete: true  # But update after each phase
+    
+    # Condensed summary
+    - id: summary
+      name: "Story Summary"
+      description: "A condensed overview of your life story"
+      style: chronological
+      length: summary
+      voice_guidance: "concise but warm"
+      auto_regenerate: true  # Always keep up to date
+    
+    # For print
+    - id: print_book
+      name: "Print-Ready Book"
+      description: "Formatted for professional printing"
+      style: thematic
+      length: comprehensive
+      voice_guidance: "polished, professional"
+      auto_regenerate: false  # Only on demand
+
+# =============================================================================
+# DELIVERY
+# =============================================================================
+
+delivery:
+  interfaces:
+    - web_viewer
+    - pdf_export
+    - book_service
+  
+  sharing:
+    public_link: false
+    password_protection: required
+    allow_download: true
+
+# =============================================================================
+# UI
+# =============================================================================
+
+ui:
+  theme: journey
+  colors:
+    primary: "#1A365D"  # Deep blue
+    secondary: "#C6A477"  # Warm gold
+    background: "#FAF8F5"  # Warm white
+    accent: "#2F855A"  # Forest green for progress
+

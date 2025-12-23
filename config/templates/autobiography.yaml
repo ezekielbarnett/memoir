@@ -1,0 +1,127 @@
+# Autobiography Document Template
+#
+# Structure for comprehensive life story memoirs.
+# Chronological with thematic threads.
+
+id: autobiography
+name: "Autobiography"
+description: "Template for comprehensive life story memoirs"
+version: 1
+tags:
+  - autobiography
+  - memoir
+  - life_story
+
+styles:
+  font_family: "Palatino, serif"
+  heading_font: "Optima, sans-serif"
+  accent_color: "#2C3E50"
+  page_margin: "1.25in"
+  line_height: 1.6
+
+sections:
+  - id: title_page
+    name: "Title Page"
+    source: metadata
+    metadata_fields:
+      - subject.name
+      - subject.birth_year
+      - subject.photo
+    order: 1
+
+  - id: preface
+    name: "Preface"
+    source: ai_generated
+    prompt_ref: literary_memoir.chapter_intro
+    order: 2
+    optional: true
+
+  - id: early_years
+    name: "Early Years"
+    source: ai_generated
+    prompt_ref: literary_memoir.memoir
+    content_filter:
+      categories:
+        - early_childhood
+        - family
+    order: 3
+    subsections:
+      - id: childhood_home
+        name: "The Home I Knew"
+        source: ai_generated
+        content_filter:
+          tags:
+            - childhood
+            - home
+      - id: family_portrait
+        name: "Family"
+        source: ai_generated
+        content_filter:
+          tags:
+            - family
+            - parents
+            - siblings
+
+  - id: growing_up
+    name: "Growing Up"
+    source: ai_generated
+    prompt_ref: literary_memoir.memoir
+    content_filter:
+      categories:
+        - education
+        - coming_of_age
+    order: 4
+
+  - id: finding_my_way
+    name: "Finding My Way"
+    source: ai_generated
+    prompt_ref: literary_memoir.memoir
+    content_filter:
+      categories:
+        - career
+        - values
+    order: 5
+
+  - id: love_and_family
+    name: "Love & Family"
+    source: ai_generated
+    prompt_ref: literary_memoir.memoir
+    content_filter:
+      categories:
+        - relationships
+    order: 6
+    optional: true
+
+  - id: challenges
+    name: "Challenges & Triumphs"
+    source: ai_generated
+    prompt_ref: literary_memoir.memoir
+    content_filter:
+      categories:
+        - challenges
+    order: 7
+
+  - id: reflections
+    name: "Reflections"
+    source: ai_generated
+    prompt_ref: literary_memoir.memoir
+    content_filter:
+      categories:
+        - reflection
+    order: 8
+
+  - id: timeline
+    name: "Life Timeline"
+    source: ai_generated
+    prompt_ref: literary_memoir.timeline
+    order: 9
+    optional: true
+
+  - id: photos
+    name: "Photo Gallery"
+    source: direct_content
+    content_filter:
+      content_type: image
+    order: 10
+    optional: true
+

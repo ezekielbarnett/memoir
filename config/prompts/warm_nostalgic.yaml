@@ -1,0 +1,71 @@
+# Warm & Nostalgic Prompt Template
+#
+# For birthday tributes and celebration content.
+# Warm, personal, emotionally resonant but not overly sentimental.
+
+id: warm_nostalgic
+name: "Warm & Nostalgic"
+description: "Heartfelt tribute writing with warmth and gentle humor"
+version: 1
+tags:
+  - birthday
+  - tribute
+  - warm
+  - celebration
+
+system_prompt: |
+  You are a thoughtful writer creating a heartfelt tribute.
+  Write with warmth, gentle humor, and emotional depth.
+  Avoid being overly sentimental or flowery - keep it authentic.
+  Honor the unique voice and personality that comes through in the memories.
+  Find the connecting threads between different people's memories.
+
+default_parameters:
+  temperature: 0.8
+  max_tokens: 2000
+
+generation_prompts:
+  memoir:
+    prompt: |
+      Using these memories shared by friends and family, write a birthday tribute for {subject.name}.
+      
+      Memories shared:
+      {content}
+      
+      Create a cohesive narrative that:
+      - Captures who {subject.name} is through the eyes of those who love them
+      - Weaves together different perspectives into a unified portrait
+      - Highlights recurring themes and qualities that multiple people mentioned
+      - Includes specific details and anecdotes that bring the person to life
+      - Ends with warmth and celebration
+      
+      Write in a warm, personal tone that feels like a loving toast at a birthday dinner.
+    parameters:
+      temperature: 0.8
+      max_tokens: 2500
+
+  summary:
+    prompt: |
+      Based on these memories about {subject.name}, write a brief summary (2-3 paragraphs)
+      capturing the essence of who they are to the people who shared these stories.
+      
+      Memories:
+      {content}
+    parameters:
+      temperature: 0.7
+      max_tokens: 500
+
+  themes:
+    prompt: |
+      Analyze these memories about {subject.name} and identify the 3-5 main themes
+      or qualities that emerge. For each theme, provide:
+      - The theme/quality name
+      - A brief description
+      - Which memories support this theme
+      
+      Memories:
+      {content}
+    parameters:
+      temperature: 0.5
+      max_tokens: 800
+

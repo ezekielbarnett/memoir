@@ -1,0 +1,61 @@
+# Git
+.git
+.gitignore
+
+# Python
+__pycache__
+*.py[cod]
+*$py.class
+*.so
+.Python
+.venv
+venv
+ENV
+.eggs
+*.egg-info
+.pytest_cache
+.mypy_cache
+.ruff_cache
+
+# IDE
+.idea
+.vscode
+*.swp
+*.swo
+.cursor
+
+# Testing
+.coverage
+htmlcov
+.tox
+.nox
+
+# Build
+build
+dist
+*.egg
+
+# Docs
+docs/_build
+
+# Terraform
+infrastructure/terraform/.terraform
+infrastructure/terraform/*.tfstate*
+infrastructure/terraform/.terraform.lock.hcl
+
+# Environment
+.env
+.env.*
+*.env
+
+# Misc
+*.log
+*.tmp
+.DS_Store
+Thumbs.db
+
+# Development files
+*.md
+!README.md
+Makefile
+

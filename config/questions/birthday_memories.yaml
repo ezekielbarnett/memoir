@@ -1,0 +1,133 @@
+# Birthday Memories Question Bank
+#
+# Questions designed to collect heartfelt memories
+# for a birthday celebration tribute.
+
+id: birthday_memories
+name: "Birthday Memories"
+description: "Questions for collecting birthday tribute memories"
+version: 1
+tags:
+  - birthday
+  - celebration
+  - memories
+
+questions:
+  - id: first_memory
+    text: "What's your earliest memory of {subject.name}?"
+    tags:
+      - childhood
+      - formative
+    category: early_memories
+    priority: 2
+
+  - id: first_impression
+    text: "What was your first impression when you met {subject.name}?"
+    tags:
+      - meeting
+      - first_impression
+    category: relationship
+    priority: 2
+
+  - id: funny_story
+    text: "Tell me about a time {subject.name} made you laugh"
+    tags:
+      - humor
+      - personality
+    category: personality
+    follow_ups:
+      - "What made that moment so funny?"
+      - "Does {subject.name} often make you laugh like that?"
+
+  - id: proud_moment
+    text: "What's a moment when you felt really proud of {subject.name}?"
+    tags:
+      - achievement
+      - emotion
+      - pride
+    category: achievements
+    priority: 2
+
+  - id: kindness
+    text: "Can you share a time when {subject.name} showed you kindness or helped you?"
+    tags:
+      - kindness
+      - generosity
+      - character
+    category: character
+
+  - id: adventure
+    text: "What's the best adventure or experience you've shared with {subject.name}?"
+    tags:
+      - adventure
+      - shared_experience
+    category: experiences
+    follow_ups:
+      - "What made that experience so special?"
+
+  - id: unique_trait
+    text: "What's something unique about {subject.name} that most people don't know?"
+    tags:
+      - personality
+      - unique
+      - hidden
+    category: personality
+
+  - id: life_lesson
+    text: "What's the most important thing you've learned from {subject.name}?"
+    tags:
+      - wisdom
+      - lesson
+      - influence
+    category: influence
+    priority: 2
+
+  - id: describe_three_words
+    text: "If you had to describe {subject.name} in three words, what would they be and why?"
+    tags:
+      - description
+      - character
+    category: character
+
+  - id: birthday_wish
+    text: "What do you wish for {subject.name} on their birthday?"
+    tags:
+      - wish
+      - future
+      - birthday
+    category: wishes
+    priority: 3
+
+  - id: favorite_quality
+    text: "What's your favorite thing about {subject.name}?"
+    tags:
+      - favorite
+      - character
+      - appreciation
+    category: character
+
+  - id: shared_tradition
+    text: "Do you have any traditions or rituals you share with {subject.name}?"
+    tags:
+      - tradition
+      - ritual
+      - shared
+    category: relationship
+
+  - id: support
+    text: "Tell me about a time when {subject.name} was there for you when you needed them"
+    tags:
+      - support
+      - friendship
+      - character
+    category: character
+
+  - id: message
+    text: "What would you like to say to {subject.name} on their special day?"
+    tags:
+      - message
+      - birthday
+      - direct
+    category: messages
+    priority: 3
+

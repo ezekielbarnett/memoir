@@ -1,0 +1,92 @@
+# Life Story Product Definition
+#
+# A comprehensive autobiography/memoir collection product
+# with AI-driven question selection for deep, meaningful content.
+
+product: life_story
+name: "Life Story Memoir"
+description: "Create a comprehensive personal memoir with guided questions"
+version: 1
+
+# Who the memoir is about
+subject:
+  required_fields:
+    - name
+    - birth_year
+  optional_fields:
+    - birth_date
+    - birthplace
+    - photo
+
+# Resources this product uses
+resources:
+  questions: life_story_questions
+  prompts: literary_memoir
+  document_template: autobiography
+
+# Content collection configuration
+collection:
+  interfaces:
+    - voice_recorder
+    - web_form
+  
+  question_selection:
+    strategy: ai_adaptive  # Uses AI to pick relevant follow-up questions
+    min_questions: 10
+    max_questions: 50
+    ai_config:
+      follow_up_depth: 2
+      theme_coverage: true
+      allow_generated_questions: true
+  
+  contributor_settings:
+    allow_anonymous: false
+    max_contributors: 1  # Just the subject
+    require_relationship: false
+    require_email: true
+
+# Processing pipeline
+processing:
+  trigger: manual
+  
+  pipeline:
+    - service: content_merger
+      config:
+        dedupe: true
+        chronological_sort: true
+    
+    - service: theme_extractor
+      config:
+        min_themes: 3
+        max_themes: 8
+    
+    - service: ai_writer
+      config:
+        prompt_ref: literary_memoir
+        output_type: memoir
+        chapter_based: true
+    
+    - service: structurer
+      config:
+        template_ref: autobiography
+
+# Delivery options
+delivery:
+  interfaces:
+    - web_viewer
+    - pdf_export
+    - book_service
+  
+  sharing:
+    public_link: false
+    password_protection: required
+    allow_download: true
+
+# UI customization
+ui:
+  theme: classic
+  colors:
+    primary: "#2C3E50"
+    secondary: "#8E44AD"
+    background: "#FAFAFA"
+
