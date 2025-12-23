@@ -114,26 +114,20 @@ memoir/
 
 ## Quick Start
 
-```bash
-pip install -e .
-
-# See the projections model in action
-python -m memoir.demo_projections
-
-# See phased product flow
-python -m memoir.demo_phased
-```
-
-## API Server
-
-Start the API:
+See **[LOCALDEV.md](LOCALDEV.md)** for full local development guide.
 
 ```bash
+# Backend
 uv sync
+cp env.example .env  # Add your GEMINI_API_KEY
 .venv/bin/uvicorn memoir.api.app:app --reload
+
+# Frontend (in another terminal)
+cd frontend && npm install && npm run dev
 ```
 
-Then visit http://localhost:8000/docs for Swagger UI.
+- Backend: http://localhost:8000 (API docs at /docs)
+- Frontend: http://localhost:3000
 
 ### Key Endpoints
 
@@ -380,6 +374,8 @@ Quick overview:
 | CloudFront | CDN |
 
 **Cost**: ~$50-75/month (dev), ~$150-300/month (prod)
+
+**Note:** CI/CD is currently disabled. See `DEPLOY.md` when ready to deploy.
 
 ## What's Next
 
